@@ -1,0 +1,1 @@
+$('#admin_user_status_<%= @user.id%>').html("<%= check_box_tag :admin, 1, @user.admin?, update_admin_url: toggle_admin_user_path(@user) %>")
