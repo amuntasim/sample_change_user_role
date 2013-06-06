@@ -19,7 +19,13 @@
     <%= f.label :admin %><br />
     <%= f.check_box :admin %>
   </div>
-  <div class="actions">
+
+    <%= f.fields_for :posts do |builder| %>
+        <%= render 'post_fields', f: builder %>
+    <% end %>
+    <%= link_to_add_fields "Add Post", f, :posts %>
+
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

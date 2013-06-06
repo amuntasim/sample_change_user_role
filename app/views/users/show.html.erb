@@ -10,6 +10,11 @@
   <%= @user.admin %>
 </p>
 
+<p>
+  <b>Total View:</b>
+  <%= @user.views_count %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
