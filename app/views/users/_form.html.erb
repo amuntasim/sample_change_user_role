@@ -20,11 +20,18 @@
     <%= f.check_box :admin %>
   </div>
 
+    <div class="field">
     <%= f.fields_for :posts do |builder| %>
         <%= render 'post_fields', f: builder %>
     <% end %>
     <%= link_to_add_fields "Add Post", f, :posts %>
-
+    </div>
+    <div class="field">
+      <%= f.fields_for :certificates do |builder| %>
+          <%= render 'certificate_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_fields "Add Certificate", f, :certificates %>
+    </div>
     <div class="actions">
     <%= f.submit %>
   </div>

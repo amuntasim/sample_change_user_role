@@ -1,0 +1,24 @@
+= simple_form_for @account do |f|
+  - if @account.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@account.errors.count, "error")} prohibited this account from being saved:"
+      %ul
+        - @account.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.input :name
+  - @account.user_accounts.each do |user_account|
+    = f.simple_fields_for :user_accounts, user_account do |assignment|
+      = assignment.check_box :user_id
+      = assignment.label :user_id, user_account.user.name rescue raise  user_account.inspect
+      = assignment.input :account_admin
+      %hr
+  - @account.without_accounts.each do |user|
+    = f.simple_fields_for :user_accounts, @account.user_accounts.build do |assignment|
+      = assignment.check_box :user_id
+      = assignment.label :user_id, user.name
+      = assignment.input :account_admin
+      %hr
+
+  .actions
+    = f.submit 'Save'

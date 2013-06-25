@@ -1,4 +1,11 @@
 ChangeUserRole::Application.routes.draw do
+  resources :accounts
+
+
+  devise_for :users
+
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   resources :users do
     member do
       put :toggle_admin
